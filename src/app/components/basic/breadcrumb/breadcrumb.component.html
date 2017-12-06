@@ -1,0 +1,49 @@
+<form (submit)="search_lists(search.value)">
+        <div >
+            <label>Search: </label>
+            
+              <input type="text"   #search>
+            
+          </div>
+          
+</form>
+<div class="row" *ngFor="let list of lists; let i = index">
+        <div class="col-sm-12">
+          <!-- Basic Form Inputs card start -->
+          <app-card [title]="'Todo List'">
+    
+
+    
+      <ul>
+        <h3>
+          {{i + 1}}: {{list.name}}   ends at {{list.due_date}} at {{list.due_time}}</h3>
+          <h4>Category: {{list.category}}</h4>
+          
+        
+        <li>
+        <form (submit)="addTask(i, task.value)">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Add Task: </label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" #task>
+                    </div>
+                  </div>
+                  
+        </form>
+        </li>
+        <li *ngFor="let task of list.tasks; let j = index">
+            {{j+1}}:{{task}} <button (click)="deleteTask(i, j)">Delete Task</button>
+                    <form (submit)="editTask(i, j, t.value)">
+                      <div>
+                        <label for="t">Edit task: </label>
+                        <input type="text" #t>
+                      </div>
+                    </form>
+                      
+        </li>
+      </ul>
+    
+    
+    </app-card>
+    </div>
+    </div>

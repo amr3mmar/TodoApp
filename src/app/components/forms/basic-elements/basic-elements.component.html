@@ -1,0 +1,31 @@
+
+<div class="row">
+    <div class="col-sm-12">
+      <!-- Basic Form Inputs card start -->
+      <app-card [title]="'New Category'">
+
+
+    <form (submit)="createCategory(name.value)">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Name: </label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" required #name>
+            </div>
+          </div>
+        <div>
+          <input type="submit">
+        </div>
+      </form>
+
+  <ul>
+    <br>
+    <h4>My Categories</h4>
+    <li *ngFor="let category of gd.categories; let i = index">
+      {{i + 1}}: {{category}} <button (click)="deleteCategory(i)">Delete List</button>
+    </li>
+  </ul>
+
+
+</app-card>
+</div>
+</div>
